@@ -38,6 +38,43 @@ yarn add thai-bad-words
 checkBadWords("ข้อความที่ต้องการตรวจสอบ");
 ```
 
+#### 🔍 `scanBadWords(input: Record<string,any>): void`
+
+```typescript
+// จะ throw error ถ้าพบคำไม่เหมาะสม
+scanBadWords(["ข้อความ"]);
+scanBadWords({"key":"ข้อความ"});
+scanBadWords({
+  "level1": {
+    "key1": "ข้อความ",
+    "key2": {
+      "level2": [
+        {
+          "keyA": "ข้อความ",
+          "keyB": {
+            "level3": [
+              {
+                "keyX": "ข้อความ",
+                "keyY": {
+                  "level4": [
+                    {
+                      "key1": "ข้อความ",
+                      "key2": [
+                        {
+                          "keyZ": "ข้อความ",
+                          "level5": {
+                            "keyM": "ข้อความ",
+                            "level6": [
+                              {
+                                "keyP": "ข้อความ",
+                                "level7": [
+                                  "ข้อความ",
+                                  "ข้อความ",
+                                  "ข้อความ"
+                                ....
+)
+```
+
 #### ➕ `addBadWords(newBadWords: string[]): void`
 
 ```typescript
@@ -71,7 +108,7 @@ const badWords = getBadWords();
 ## 🌟 ตัวอย่างการใช้งาน
 
 ```typescript
-import { checkBadWords, addBadWords, addIgnoreList } from "thai-bad-words";
+import { checkBadWords, addBadWords, addIgnoreList } from "@sit-sandbox/thai-bad-words";
 
 // เพิ่มคำที่ต้องการยกเว้น
 addIgnoreList(["หีบ", "สัสดี"]);
