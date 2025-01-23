@@ -21,10 +21,10 @@ Choose your preferred package manager:
 
 ```bash
 # Using npm
-npm install thai-bad-words
+npm install @sit-sandbox/thai-bad-words
 
 # Using yarn
-yarn add thai-bad-words
+yarn add @sit-sandbox/thai-bad-words
 ```
 
 ## 🛠️ API Reference
