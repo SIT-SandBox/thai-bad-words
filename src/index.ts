@@ -23,6 +23,30 @@ export function checkBadWords(input: string): void {
     }
 }
 
+export async function scanBadWords(input: Record<string,any>):Promise<void> {
+    for (const key in input) {
+        if (input.hasOwnProperty(key)) {
+            const value = input[key];
+
+            if (typeof value === 'object' && value !== null) {
+                if (Array.isArray(value)) {
+                    for (const item of value) {
+                        if (typeof item === 'string') {
+                            checkBadWords(item);
+                        } else if (typeof item === 'object' && item !== null) {
+                            await scanBadWords(item);
+                        }
+                    }
+                } else {
+                    await scanBadWords(value);
+                }
+            } else if (typeof value === 'string') {
+                checkBadWords(value);
+            }
+        }
+    }
+}
+
 export function addBadWords(newBadWords: string[]): void {
     rootWords.push(...newBadWords);
     generateBadWords();
