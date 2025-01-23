@@ -21,10 +21,10 @@
 
 ```bash
 # ใช้ npm
-npm install thai-bad-words
+npm install @sit-sandbox/thai-bad-words
 
 # ใช้ yarn
-yarn add thai-bad-words
+yarn add @sit-sandbox/thai-bad-words
 ```
 
 ## 🛠️ API อ้างอิง
