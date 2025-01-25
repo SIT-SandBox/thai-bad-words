@@ -31,17 +31,11 @@ yarn add @sit-sandbox/thai-bad-words
 
 ### Core Functions
 
-#### 🔍 `checkBadWords(input: string): void`
-
-```typescript
-// Throws an error if bad words are found
-checkBadWords("some text");
-```
-
 #### 🔍 `scanBadWords(input: Record<string,any>): void`
 
 ```typescript
 // Throws an error if bad words are found
+scanBadWords("some text");
 scanBadWords(["some text"]);
 scanBadWords({"key":"some text"});
 scanBadWords({
@@ -108,7 +102,7 @@ const badWords = getBadWords();
 ## 🌟 Usage Example
 
 ```typescript
-import { checkBadWords, addBadWords, addIgnoreList } from "@sit-sandbox/thai-bad-words";
+import { scanBadWords, addBadWords, addIgnoreList } from "@sit-sandbox/thai-bad-words";
 
 // Add words to ignore
 addIgnoreList(["หีบ", "สัสดี"]);
@@ -118,7 +112,7 @@ addBadWords(["โง่", "บ้า"]);
 
 // Check text
 try {
-  checkBadWords("some text to check");
+  scanBadWords("some text to check");
 } catch (error) {
   console.log("❌ Bad word detected:", error.message);
 }
