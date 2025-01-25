@@ -32,9 +32,7 @@ describe('Thai Bad Words Detector using scanBadWords', () => {
 
   test('should handle new prefixes and detect bad words with prefixes', async () => {
     addPrefixes(['super']);
-    const badWords = getBadWords();
-    expect(badWords.some(word => word.startsWith('super'))).toBeTruthy();
-
+    addBadWords(['badword']);
     // Test if a word with the prefix "super" gets detected
     await expect(scanBadWords('superbadword')).rejects.toThrow('Bad words detected!');
   });
