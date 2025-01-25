@@ -1,7 +1,6 @@
 declare module 'thai-bad-words' {
   export function addPrefixes(newPrefixes: string[]): void;
   export function addIgnoreList(newIgnoreWords: string[]): void;
-  export function checkBadWords(input: string): void;
   export function addBadWords(newBadWords: string[]): void;
   export function scanBadWords(input: Record<string, any>): void;
   export function removeBadWords(wordsToRemove: string[]): void;
