@@ -1,0 +1,17 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-dev-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if the PR is from dev branch
+        run: |
+          if [[ "${{ github.head_ref }}" != "dev" ]]; then
+            echo "Error: You can only merge PRs from the 'dev' branch to 'main'."
+            exit 1
+          fi

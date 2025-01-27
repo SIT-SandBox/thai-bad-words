@@ -9,7 +9,7 @@ import {
 
 const trie = new Trie();
 
-export function checkBadWords(input: string): void {
+function checkBadWords(input: string): void {
     const cleanedInput = input.replace(/[^a-zA-Z0-9\u0E00-\u0E7F]/g, '');
 
     for (let ignore of ignoreList) {
@@ -23,25 +23,29 @@ export function checkBadWords(input: string): void {
     }
 }
 
-export async function scanBadWords(input: Record<string,any>):Promise<void> {
-    for (const key in input) {
-        if (input.hasOwnProperty(key)) {
-            const value = input[key];
-
-            if (typeof value === 'object' && value !== null) {
-                if (Array.isArray(value)) {
-                    for (const item of value) {
-                        if (typeof item === 'string') {
-                            checkBadWords(item);
-                        } else if (typeof item === 'object' && item !== null) {
-                            await scanBadWords(item);
+export async function scanBadWords(input: Record<string,any> | string):Promise<void> {
+    if (typeof input === 'string'){
+        checkBadWords(input);
+    }else{
+        for (const key in input) {
+            if (input.hasOwnProperty(key)) {
+                const value = input[key];
+    
+                if (typeof value === 'object' && value !== null) {
+                    if (Array.isArray(value)) {
+                        for (const item of value) {
+                            if (typeof item === 'string') {
+                                checkBadWords(item);
+                            } else if (typeof item === 'object' && item !== null) {
+                                await scanBadWords(item);
+                            }
                         }
+                    } else {
+                        await scanBadWords(value);
                     }
-                } else {
-                    await scanBadWords(value);
+                } else if (typeof value === 'string') {
+                    checkBadWords(value);
                 }
-            } else if (typeof value === 'string') {
-                checkBadWords(value);
             }
         }
     }
