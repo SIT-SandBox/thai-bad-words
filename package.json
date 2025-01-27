@@ -1,6 +1,6 @@
 {
   "name": "@sit-sandbox/thai-bad-words",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A package to detect bad words in Thai language.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,18 @@
     "words-check",
     "bad",
     "bad-words",
-    "thai-bad-words"
+    "thai-bad-words",
+    "thai-slang",
+    "thai-offensive-words",
+    "thai-profanity",
+    "profanity-filter",
+    "thai-language-filter",
+    "text-filter",
+    "censorship",
+    "content-moderation",
+    "filtering",
+    "obscene-words",
+    "language-detection"
   ],
   "author": "SIT-SandBox",
   "license": "MIT",
@@ -35,5 +46,6 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.3"
-  }
+  },
+  "type": "module"
 }

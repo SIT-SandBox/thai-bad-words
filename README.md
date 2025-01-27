@@ -21,21 +21,52 @@ Choose your preferred package manager:
 
 ```bash
 # Using npm
-npm install thai-bad-words
+npm install @sit-sandbox/thai-bad-words
 
 # Using yarn
-yarn add thai-bad-words
+yarn add @sit-sandbox/thai-bad-words
 ```
 
 ## 🛠️ API Reference
 
 ### Core Functions
 
-#### 🔍 `checkBadWords(input: string): void`
+#### 🔍 `scanBadWords(input: Record<string,any>): void`
 
 ```typescript
 // Throws an error if bad words are found
-checkBadWords("some text");
+scanBadWords("some text");
+scanBadWords(["some text"]);
+scanBadWords({"key":"some text"});
+scanBadWords({
+  "level1": {
+    "key1": "some text",
+    "key2": {
+      "level2": [
+        {
+          "keyA": "some text",
+          "keyB": {
+            "level3": [
+              {
+                "keyX": "some text",
+                "keyY": {
+                  "level4": [
+                    {
+                      "key1": "some text",
+                      "key2": [
+                        {
+                          "keyZ": "some text",
+                          "level5": {
+                            "keyM": "some text",
+                            "level6": [
+                              {
+                                "keyP": "some text",
+                                "level7": [
+                                  "some text",
+                                  "some text",
+                                  "some text"
+                                ....
+)
 ```
 
 #### ➕ `addBadWords(newBadWords: string[]): void`
@@ -71,7 +102,7 @@ const badWords = getBadWords();
 ## 🌟 Usage Example
 
 ```typescript
-import { checkBadWords, addBadWords, addIgnoreList } from "thai-bad-words";
+import { scanBadWords, addBadWords, addIgnoreList } from "@sit-sandbox/thai-bad-words";
 
 // Add words to ignore
 addIgnoreList(["หีบ", "สัสดี"]);
@@ -81,7 +112,7 @@ addBadWords(["โง่", "บ้า"]);
 
 // Check text
 try {
-  checkBadWords("some text to check");
+  scanBadWords("some text to check");
 } catch (error) {
   console.log("❌ Bad word detected:", error.message);
 }
