@@ -1,4 +1,4 @@
-declare module 'thai-bad-words' {
+declare module '@sit-sandbox/thai-bad-words' {
   export function addPrefixes(newPrefixes: string[]): void;
   export function addIgnoreList(newIgnoreWords: string[]): void;
   export function addBadWords(newBadWords: string[]): void;
