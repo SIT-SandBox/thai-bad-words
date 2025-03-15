@@ -3,7 +3,7 @@ export let prefixes: string[] = [
 ];
 
 export let ignoreList: string[] = [
-    "หีบ", "สัสดี", "หน้าหีบ", "ตด", "กะหรี่ปั๊บ"
+    "หีบ", "สัสดี", "หน้าหีบ", "ตด", "กะหรี่ปั๊บ", "บ้าน"
 ];
 
 export let rootWords: string[] = [
