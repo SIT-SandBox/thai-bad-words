@@ -18,17 +18,21 @@ export class Trie {
     current.isEndOfWord = true;
   }
 
-  search(text: string): boolean {
+  search(text: string): boolean | string {
     const n = text.length;
     for (let i = 0; i < n; i++) {
       let current = this.root;
+      let matchedWord = '';
+
       for (let j = i; j < n; j++) {
         if (!current.children.has(text[j])) {
-          break;
+          break; 
         }
         current = current.children.get(text[j])!;
+        matchedWord += text[j];
+
         if (current.isEndOfWord) {
-          return true;
+          return matchedWord;
         }
       }
     }
