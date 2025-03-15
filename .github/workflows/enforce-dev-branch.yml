@@ -4,14 +4,18 @@ on:
   pull_request:
     branches:
       - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   check-dev-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if the PR is from dev branch
+      - name: Check if the PR is from dev branch to main
         run: |
-          if [[ "${{ github.head_ref }}" != "dev" ]]; then
+          if [[ "${{ github.head_ref }}" != "dev" && "${{ github.base_ref }}" == "main" ]]; then
             echo "Error: You can only merge PRs from the 'dev' branch to 'main'."
             exit 1
           fi

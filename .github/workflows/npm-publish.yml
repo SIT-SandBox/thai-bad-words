@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
-      - run: npm run build   # Add this step to compile TypeScript
+      - run: npm run build
       - run: npm test
 
   publish-npm:
